@@ -7,11 +7,11 @@ The learning-roadmap report is a public, spec-driven, auto-generated product sho
 ## Requirements
 
 ### Requirement: Fixed reporting header with avatar and headline metric
-The report SHALL render a fixed header at the top of the page showing a circular coach avatar, a tagline identifying the report owner, and a headline metric summarising current learning state, collapsing to a slim single line when the page is scrolled.
+The report SHALL render a fixed header at the top of the page showing a circular coach avatar, a tagline identifying the report owner, and a headline metric summarising current learning state as **portfolio items** (certifications + courses + applied-learnings + counted learning media) over open gates, collapsing to a slim single line when the page is scrolled.
 
 #### Scenario: Header renders with avatar, tagline and metric on load
 - **WHEN** the report page loads
-- **THEN** a fixed header shows a circular avatar placeholder, the tagline, and the headline metric in its expanded state
+- **THEN** a fixed header shows a circular avatar, the tagline, and the headline metric in its expanded state, where the metric reads "<N> portfolio items in hand / <G> gates open" (or approved wording counting all four portfolio categories)
 
 #### Scenario: Header collapses on scroll
 - **WHEN** the user scrolls the page past 50px
@@ -33,15 +33,15 @@ The report SHALL present the four product-lifecycle stages (Inception, Build, Te
 - **THEN** the card shows a status pill matching its current progress state and a supporting note
 
 ### Requirement: Levers-in-hand summary
-The report SHALL list the learner's certifications, courses, and applied-learning items as three grouped cards, each item annotated with its status (year / Done / percent / Live / Parked / Awaits approval).
+The report SHALL list the learner's portfolio as four grouped cards — Certifications, Courses, Applied learning, Learning media — each item annotated with its status, under the heading "Learning Portfolio".
 
 #### Scenario: Three lever groups render
-- **WHEN** the levers section renders
-- **THEN** three cards appear: Certifications, Courses, Applied learning
+- **WHEN** the portfolio section renders
+- **THEN** four cards appear: Certifications, Courses, Applied learning, Learning media
 
 #### Scenario: Each lever shows its status
-- **WHEN** a lever item renders
-- **THEN** it shows the status annotation appropriate to its state
+- **WHEN** a portfolio item renders
+- **THEN** it shows the status annotation appropriate to its state (year / Done / percent / Live / Parked / Awaits approval / medium badge)
 
 ### Requirement: Open gates and next-step candidates
 The report SHALL render open decision gates as cards and next-step candidates as a numbered list, clearly marked as candidates the learner picks rather than directives.
@@ -55,11 +55,19 @@ The report SHALL render open decision gates as cards and next-step candidates as
 - **THEN** the candidates appear as a numbered list with a supporting hint each
 
 ### Requirement: Generated artifact from source of truth
-The published report SHALL be generated from the source-of-truth template and data — never hand-edited in the Pages repo — so that a learning event logged to the roadmap/history markdown is reflected in the published report by running the publish script.
+Every visible data section of the published report SHALL be generated from the source-of-truth markdown (`learning_roadmap.md` §2/§3/§5/§6, `learning_history.md` §1, `learning_media.md`) by the publish script — never from hand-maintained HTML in the template or Pages repo — so that any learning event logged to the markdown sources is reflected in the corresponding report section by running the publish script. Editing a markdown source alone SHALL be sufficient to update the section it drives; no static template section may silently go stale.
 
 #### Scenario: Publish rebuilds the report
-- **WHEN** the publish script runs after the source data changed
-- **THEN** it regenerates the published report from the template and pushes only that file
+- **WHEN** the publish script runs after any source markdown changed
+- **THEN** it regenerates the published report from the template + parsed section data and pushes only that file
+
+#### Scenario: Every data section updates from its markdown
+- **WHEN** D K logs a change to the source markdown (new lever, changed lifecycle stage status, new agentic-core component, gate, next-step, or learning-media item) and the publish script runs
+- **THEN** the corresponding visible section (levers card, lifecycle card, agentic-core tag, gate, next-step list, portfolio card, or headline metric) reflects the change without any manual template edit
+
+#### Scenario: No static data sections remain
+- **WHEN** the template is inspected
+- **THEN** no visible data-bearing section is hardcoded HTML in the template — every section's content is emitted by a section builder from markdown (styling and layout may remain in the template)
 
 #### Scenario: Publish is silent when unchanged
 - **WHEN** the publish script runs and the source data is unchanged
