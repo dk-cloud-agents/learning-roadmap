@@ -28,4 +28,4 @@
 
 - [x] Fill `tests/results.md` with real pass/fail + evidence — 11/11 pass, no fabricated results
 - [x] Hand D K the live link + test report for acceptance — pending her reply
-- [ ] On approval: `openspec archive` + mark accessible
+- [ ] On approval: `openspec archive` + mark accessible — D K approved flipping implementation to done (2026-11-20); archive pending this final sign-off
