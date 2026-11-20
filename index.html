@@ -210,13 +210,15 @@
     <section style="margin-top:40px">
       <div class="sec-label">Lifecycle capability — where each stage sits</div>
       <div class="lifecycle">
-        <div class="stage"><div class="name">Inception</div><span class="state strong">Strong</span><div class="note">PO core · PO-buddy automates approval/PI/DoR</div></div>
+        <!--SECTION:lifecycle-->
+<div class="stage"><div class="name">Inception</div><span class="state strong">Strong</span><div class="note">PO core: CSM/CSPO, SAFe, POPM; decision-brief template in cos Sprint 1; PO-buddy automates PO workflows (approval, PI progress, DoR checker)</div></div>
         <div class="flow-arrow">→</div>
-        <div class="stage"><div class="name">Build</div><span class="state strong">Strong</span><div class="note">SDD done · E2E on coach reports · OpenSpec live</div></div>
+        <div class="stage"><div class="name">Build</div><span class="state strong">Strong</span><div class="note">SDD completed + run end-to-end on coach reports (spec→design→tasks→archive via OpenSpec); OpenSpec live on cos; running agent-directed builds</div></div>
         <div class="flow-arrow">→</div>
-        <div class="stage"><div class="name">Test</div><span class="state strong">Strong</span><div class="note">BDD done · 11/11 real pass on reports · gate set</div></div>
+        <div class="stage"><div class="name">Test</div><span class="state strong">Strong</span><div class="note">BDD completed; real test-plan gate run on coach reports (11/11 real pass evidence, re-run on post-change); mandated on cos (approve-then-run, real results)</div></div>
         <div class="flow-arrow">→</div>
-        <div class="stage"><div class="name">Ship / Maintain</div><span class="state go">In progress</span><div class="note">publish automation live · paperless loop live</div></div>
+        <div class="stage"><div class="name">Ship / Maintain</div><span class="state go">In progress</span><div class="note">Coach-report publish automation live (source→script→push→serve); Paperless follow-through loop live; cos not yet built</div></div>
+<!--/SECTION:lifecycle-->
       </div>
     </section>
 
@@ -225,11 +227,14 @@
       <div class="orch">
         <div class="label">Agentic system</div>
         <div class="orch-tags">
+          <!--SECTION:agentic_core-->
+
           <span class="live">PO-buddy — live</span>
           <span>cos (Chief of Staff)</span>
-          <span>Second brain — vault</span>
+          <span class="live">Second brain — live</span>
           <span>OpenSpec / SDD</span>
-          <span>Build &amp; test agents</span>
+          <span>Build & test agents</span>
+<!--/SECTION:agentic_core-->
         </div>
       </div>
     </section>
@@ -237,45 +242,21 @@
     <section style="margin-top:40px">
       <div class="sec-label">Levers already in hand</div>
       <div class="lever-grid">
-        <div class="lever-card">
-          <h3>Certifications</h3>
-          <ul>
-            <li>CSM® <span class="pct done">2023</span></li>
-            <li>CSPO® <span class="pct done">2023</span></li>
-            <li>SAFe® Agilist <span class="pct done">2024</span></li>
-            <li>SAFe® POPM <span class="pct done">2026</span></li>
-            <li>AWS Cloud Practitioner <span class="pct park">Parked</span></li>
-          </ul>
-        </div>
-        <div class="lever-card">
-          <h3>Courses</h3>
-          <ul>
-            <li>SDD (coding agents) <span class="pct done">Done</span></li>
-            <li>BDD <span class="pct done">Done</span></li>
-            <li>API basics <span class="pct done">Done</span></li>
-            <li>Agentic AI <span class="pct go">25%</span></li>
-          </ul>
-        </div>
-        <div class="lever-card">
-          <h3>Applied learning</h3>
-          <ul>
-            <li>paperless Phase 0 <span class="pct done">Live</span></li>
-            <li>AWS log checker <span class="pct done">Live</span></li>
-            <li>AWS DB tunnel <span class="pct done">Live</span></li>
-            <li>Coach reports (Hung/Lars) <span class="pct done">Live</span></li>
-            <li>PO-buddy <span class="pct done">Live</span></li>
-            <li>cos Sprint 1 <span class="pct go">Awaits approval</span></li>
-            <li>Second brain <span class="pct done">Live</span></li>
-          </ul>
-        </div>
+        <!--SECTION:levers-->
+<div class="lever-card"><h3>Certifications</h3><ul><li>Certified ScrumMaster (CSM®) <span class="pct done">2023</span></li><li>Certified Scrum Product Owner (CSPO®) <span class="pct done">2023</span></li><li>Certified SAFe® Agilist (SA) — "Leading SAFe 6.0" course <span class="pct done">2024</span></li><li>AWS Certified Cloud Practitioner <span class="pct park">Parked</span></li><li>SAFe® POPM (Product Owner / Product Manager) <span class="pct done">2026</span></li></ul></div>
+        <div class="lever-card"><h3>Courses</h3><ul><li>Spec-Driven Development with Coding Agents <span class="pct done">Done</span></li><li>Agentic AI <span class="pct go">25%</span></li><li>API Crash Course: Create, Test, & Document your APIs <span class="pct done">Done</span></li><li>Behavior-Driven Development <span class="pct done">Done</span></li></ul></div>
+        <div class="lever-card"><h3>Applied learning</h3><ul><li>paperless Phase 0 <span class="pct done">Live</span></li><li>AWS log checker <span class="pct done">Live</span></li><li>AWS DB tunnel <span class="pct done">Live</span></li><li>Coach reports (Hung/Lars) <span class="pct done">Live</span></li><li>PO-buddy <span class="pct done">Live</span></li><li>cos Sprint 1 <span class="pct go">Awaits approval</span></li><li>Second brain <span class="pct done">Live</span></li></ul></div>
+<!--/SECTION:levers-->
       </div>
     </section>
 
     <section style="margin-top:40px">
       <div class="sec-label">Open gates</div>
       <div class="gates">
-        <div class="gate"><span class="tag open">Open</span><h3>G-learn-1 — cos Sprint 1</h3><p>Approve the plan + test plan, then build the first agentic system owned end-to-end.</p></div>
-        <div class="gate"><span class="tag open">Open</span><h3>G-learn-2 — Agentic AI</h3><p>Finish the course (25% now) to land orchestration fundamentals.</p></div>
+        <!--SECTION:gates-->
+<div class="gate"><span class="tag open">Open</span><h3>G-learn-1 — cos Sprint 1</h3><p>First real agentic build owned end-to-end (the central artifact of this goal)</p></div>
+        <div class="gate"><span class="tag open">Open</span><h3>G-learn-2 — Agentic AI</h3><p>Orchestration fundamentals in hand</p></div>
+<!--/SECTION:gates-->
       </div>
     </section>
 
@@ -284,9 +265,11 @@
       <div class="next">
         <div class="label">Sharpening of the goal, not directives</div>
         <ol>
-          <li>Approve cos Sprint 1 (onboarding + decision-brief) <span class="hint">— clearest first real move</span></li>
+          <!--SECTION:next_steps-->
+<li>Approve cos Sprint 1 (onboarding + decision-brief) <span class="hint">— clearest first real move</span></li>
           <li>Finish Agentic AI <span class="hint">— looms largest, closest to done</span></li>
           <li>Lock the §2 applied-learning schema <span class="hint">— records the journey as it happens</span></li>
+<!--/SECTION:next_steps-->
         </ol>
       </div>
     </section>
