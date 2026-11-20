@@ -18,12 +18,12 @@ The report SHALL render a fixed header at the top of the page showing a circular
 - **THEN** the document width equals the viewport width and no element overflows horizontally
 
 ### Requirement: Levers-in-hand summary
-The report SHALL present the learner's portfolio as four grouped cards — **Certifications, Courses, Applied learning, Learning media** — each item annotated with its status, shown under the section heading **"Learning Portfolio"**.
+The report SHALL list the learner's portfolio as four grouped cards — Certifications, Courses, Applied learning, Learning media — each item annotated with its status, under the heading "Learning Portfolio".
 
-#### Scenario: Four portfolio groups render
+#### Scenario: Three lever groups render
 - **WHEN** the portfolio section renders
 - **THEN** four cards appear: Certifications, Courses, Applied learning, Learning media
 
-#### Scenario: Each portfolio item shows its status
+#### Scenario: Each lever shows its status
 - **WHEN** a portfolio item renders
 - **THEN** it shows the status annotation appropriate to its state (year / Done / percent / Live / Parked / Awaits approval / medium badge)
