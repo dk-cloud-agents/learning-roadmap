@@ -17,7 +17,7 @@ The report SHALL render a fixed header at the top of the page showing a circular
 - **WHEN** the report is viewed at a 390px-wide mobile viewport
 - **THEN** the document width equals the viewport width and no element overflows horizontally
 
-### Requirement: Levers-in-hand summary → Learning Portfolio
+### Requirement: Levers-in-hand summary
 The report SHALL present the learner's portfolio as four grouped cards — **Certifications, Courses, Applied learning, Learning media** — each item annotated with its status, shown under the section heading **"Learning Portfolio"**.
 
 #### Scenario: Four portfolio groups render
