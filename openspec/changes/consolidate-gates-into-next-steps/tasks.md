@@ -14,7 +14,7 @@
 ## 2. Builder merge
 
 - [ ] 2.1 Update `build_next_steps(roadmap_md)` to read BOTH §5 gates and §6 next steps, merging into one list
-- [ ] 2.2 Gate-derived items render with an "Open gate" badge; §6 plain actions render without one
+- [ ] 2.2 Gate-derived items render with an "Open gate" badge and their HUMAN-READABLE subject (e.g. "Approve cos Sprint 1 …") — never the "G-learn-N" code; §6 plain actions render without a badge
 - [ ] 2.3 De-duplicate: if a gate's subject matches a §6 item (e.g. G-learn-1 ≈ "Approve cos Sprint 1"), render it once, badged
 - [ ] 2.4 Drop `build_gates`/its section from `SECTIONS` (or mark the gates marker removed) so no gates section is emitted
 
@@ -24,7 +24,7 @@
 
 ## 4. Tests (on D K's approved test plan — real results)
 
-- [ ] 4.1 Fixture: gates + next-steps merge into one list; gate item badged; de-dup removes the §5/§6 duplicate
+- [ ] 4.1 Fixture: gates + next-steps merge into one list; gate item badged with human-readable text (no "G-learn-N"); de-dup removes the §5/§6 duplicate
 - [ ] 4.2 Live E2E: publish → single Next steps section, no Open gates section, gate badge visible on the blocked item
 - [ ] 4.3 Regression: other sections + portfolio metric intact; publish silent when unchanged; scoped `index.html` commit; mobile no-overflow
 
