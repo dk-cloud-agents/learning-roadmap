@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your learning roadmap · Lars</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: rgba(0,0,0,0.92);
+      --ink-soft: rgba(0,0,0,0.70);
+      --muted: #615d59;
+      --faint: #a39e98;
+      --white: #ffffff;
+      --warm: #f6f5f4;
+      --line: 1px solid rgba(0,0,0,0.09);
+      --blue: #0075de;
+      --blue-bg: #f2f9ff;
+      --green: #1a7f2e;
+      --green-bg: #eef7ee;
+      --orange: #c75b00;
+      --orange-bg: #fdf3ea;
+      --rose: #c23b56;
+      --rose-bg: #fbeef1;
+      --grey: #6b6763;
+      --grey-bg: #f3f1f0;
+      --navy: #2e4057;
+      --navy-soft: #435a75;
+      --shadow: rgba(0,0,0,0.035) 0 8px 24px, rgba(0,0,0,0.02) 0 3px 8px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      /* reserves space for the fixed header so it never covers content */
+      padding-top: 300px;
+    }
+
+    /* === Fixed header (mirrors Hung's report header: avatar + tagline + metric,
+       collapses to a slim line on scroll — APPROVED w3schools pattern, position:fixed) === */
+    .top {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 26px 22px 22px; overflow: hidden;
+      background: linear-gradient(180deg, var(--navy), var(--navy-soft));
+      color: #fff; transition: all .28s ease;
+    }
+    body[scrolled] .top {
+      flex-direction: row; justify-content: space-between; align-items: center;
+      min-height: 60px; padding: 8px 20px;
+    }
+    body[scrolled] .avatar { width: 40px; height: 40px; font-size: 15px; border-width: 2px; }
+    body[scrolled] .tagline { display: none; }
+    body[scrolled] .metric .n { font-size: 24px; letter-spacing: -1px; }
+    body[scrolled] .metric .goal { font-size: 12px; }
+    .avatar {
+      transition: all .28s ease;
+      width: 96px; height: 96px; border-radius: 50%;
+      background: rgba(255,255,255,0.14);
+      border: 3px solid rgba(255,255,255,.55);
+      box-shadow: 0 6px 20px rgba(0,0,0,.18);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    /* PLACEHOLDER avatar (D K supplies the real image) — replace the inner span
+       with <img src="data:..." style="width:100%;height:100%;border-radius:50%;object-fit:cover"> */
+    .avatar .ph {
+      font-family: 'Newsreader', serif; font-size: 38px; font-weight: 700; color: rgba(255,255,255,.92);
+    }
+    .avatar .ph-tag {
+      position: absolute; bottom: -4px; right: -6px;
+      background: rgba(255,255,255,.9); color: var(--navy);
+      font-size: 8px; font-weight: 700; letter-spacing: .03em;
+      padding: 2px 5px; border-radius: 9999px;
+    }
+    .tagline { margin-top: 12px; font-size: 15px; font-weight: 600; opacity: .92; letter-spacing: .2px; transition: all .28s ease; }
+    .metric { margin-top: 14px; line-height: 1; transition: all .28s ease; }
+    .metric .n { font-size: 40px; font-weight: 700; letter-spacing: -1.5px; }
+    .metric .goal { font-size: 14px; font-weight: 500; opacity: .85; }
+
+    .page { max-width: 940px; margin: 0 auto; padding: 40px 40px 96px; }
+    hr { border: none; border-top: var(--line); margin: 40px 0; }
+
+    section { margin-bottom: 8px; }
+    .sec-label {
+      font-size: 13px; font-weight: 600; color: var(--faint);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 18px;
+    }
+
+    /* Goal */
+    .goal-card {
+      background: linear-gradient(180deg, var(--warm), #f9f8f7);
+      border: var(--line); border-radius: 16px;
+      padding: 30px 32px; box-shadow: var(--shadow);
+    }
+    .goal-card .label { font-size: 13px; font-weight: 700; color: var(--blue); letter-spacing: 0.02em; margin-bottom: 10px; }
+    .goal-card h2 { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
+    .goal-card p  { color: var(--muted); font-size: 15px; margin-top: 12px; max-width: 62ch; }
+    .goal-flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+    .goal-flow span { font-size: 13px; font-weight: 600; color: var(--muted); }
+    .goal-flow .arrow { color: var(--faint); font-size: 15px; }
+
+    /* Lifecycle */
+    .lifecycle { display: grid; grid-template-columns: 1fr 12px 1fr 12px 1fr 12px 1fr; align-items: center; gap: 0; }
+    .stage { border: var(--line); border-radius: 12px; padding: 16px 18px; background: var(--white); }
+    .stage .name { font-size: 15px; font-weight: 700; }
+    .stage .state { font-size: 12px; font-weight: 600; margin-top: 4px; display: inline-block; padding: 1px 8px; border-radius: 9999px; }
+    .stage .note { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+    .state.strong { color: var(--green);  background: var(--green-bg); }
+    .state.early  { color: var(--rose);   background: var(--rose-bg); }
+    .state.go   { color: var(--orange); background: var(--orange-bg); }
+    .flow-arrow { color: var(--faint); font-size: 16px; text-align: center; font-weight: 600; }
+
+    /* Levers */
+    .lever-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .lever-card { border: var(--line); border-radius: 12px; padding: 18px 20px; background: var(--white); }
+    .lever-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+    .lever-card ul { list-style: none; }
+    .lever-card li {
+      font-size: 13px; color: var(--muted);
+      padding: 7px 0; border-top: 1px solid rgba(0,0,0,0.05);
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+    }
+    .lever-card li:first-child { border-top: none; }
+    .pct { font-size: 12px; font-weight: 600; flex-shrink: 0; }
+    .pct.done { color: var(--green); }
+    .pct.go   { color: var(--orange); }
+    .pct.park { color: var(--faint); }
+
+    /* Orchestration */
+    .orch {
+      border: 1.5px dashed rgba(90,120,160,0.35); border-radius: 14px;
+      background: var(--warm); padding: 20px 24px;
+    }
+    .orch .label { font-size: 13px; font-weight: 700; color: #456a8f; display: flex; align-items: center; gap: 8px; }
+    .orch-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+    .orch-tags span { font-size: 12.5px; font-weight: 500; color: #3b5b78; background: rgba(255,255,255,0.8); border: 1px solid rgba(90,120,160,0.18); border-radius: 9999px; padding: 4px 12px; }
+
+    /* Gates */
+    .gates { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .gate { border: var(--line); border-radius: 12px; padding: 18px 20px; background: var(--white); }
+    .gate .tag { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em; padding: 3px 9px; border-radius: 9999px; margin-bottom: 10px; }
+    .gate .tag.open { color: var(--orange); background: var(--orange-bg); }
+    .gate h3 { font-size: 15px; font-weight: 700; }
+    .gate p { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+    /* Next steps */
+    .next { border: 1.5px dashed rgba(190,120,60,0.35); border-radius: 14px; background: var(--warm); padding: 20px 24px; }
+    .next .label { font-size: 13px; font-weight: 700; color: var(--orange); margin-bottom: 14px; }
+    .next ol { list-style: none; counter-reset: step; }
+    .next li { position: relative; padding-left: 34px; counter-increment: step; font-size: 14px; color: var(--ink); padding-bottom: 12px; }
+    .next li:last-child { padding-bottom: 0; }
+    .next li::before {
+      content: counter(step); position: absolute; left: 0; top: 0;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--orange-bg); color: var(--orange);
+      font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+    }
+    .next .hint { color: var(--muted); font-size: 12.5px; }
+
+    .foot { margin-top: 64px; color: var(--faint); font-size: 12.5px; border-top: var(--line); padding-top: 20px; }
+
+    @media (max-width: 720px) {
+      body { padding-top: 232px; }
+      .page { padding: 32px 22px 72px; }
+      .top { padding: 18px 18px 16px; }
+      .avatar { width: 72px; height: 72px; }
+      .avatar .ph { font-size: 28px; }
+      .tagline { font-size: 13.5px; margin-top: 10px; }
+      .metric { margin-top: 10px; }
+      .metric .n { font-size: 32px; }
+      .lever-grid, .gates { grid-template-columns: 1fr; }
+      .lifecycle { grid-template-columns: 1fr; }
+      .flow-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fixed header: avatar (placeholder) + tagline + headline metric — mirrors Hung's report -->
+  <div class="top">
+    <div class="avatar" id="avatarSlot">
+      <span class="ph">L</span>
+      <span class="ph-tag">PLACEHOLDER</span>
+    </div>
+    <div class="tagline">Your learning roadmap · Lars</div>
+    <div class="metric"><span class="n" id="num">9</span> <span class="goal" id="goal">levers in hand / 2 gates open</span></div>
+  </div>
+
+  <div class="page">
+    <section>
+      <div class="sec-label">The role</div>
+      <div class="goal-card">
+        <div class="label">Goal — sharpened iteratively</div>
+        <h2>You orchestrate. Agents execute. You own the outcome end to end.</h2>
+        <p>The PO stops being the person who does the work (even with AI help) and becomes the person who designs, directs, and reviews the human + agent team. This merges two real, emerging roles — Full-Stack PO and Agentic PO (already being hired).</p>
+        <div class="goal-flow">
+          <span>Inception</span><span class="arrow">→</span>
+          <span>Build</span><span class="arrow">→</span>
+          <span>Test</span><span class="arrow">→</span>
+          <span>Ship</span><span class="arrow">→</span>
+          <span>Maintain</span>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:40px">
+      <div class="sec-label">Lifecycle capability — where each stage sits</div>
+      <div class="lifecycle">
+        <div class="stage"><div class="name">Inception</div><span class="state strong">Strong</span><div class="note">PO core — CSM, CSPO, SAFe, POPM</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="stage"><div class="name">Build</div><span class="state go">In progress</span><div class="note">SDD done · OpenSpec live</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="stage"><div class="name">Test</div><span class="state go">In progress</span><div class="note">BDD done · test-plan gate set</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="stage"><div class="name">Ship / Maintain</div><span class="state early">Early</span><div class="note">paperless follow-through live</div></div>
+      </div>
+    </section>
+
+    <section style="margin-top:40px">
+      <div class="sec-label">The agentic core — what you design &amp; review</div>
+      <div class="orch">
+        <div class="label">Agentic system</div>
+        <div class="orch-tags">
+          <span>cos (Chief of Staff)</span>
+          <span>Second brain — vault</span>
+          <span>OpenSpec / SDD</span>
+          <span>Build &amp; test agents</span>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:40px">
+      <div class="sec-label">Levers already in hand</div>
+      <div class="lever-grid">
+        <div class="lever-card">
+          <h3>Certifications</h3>
+          <ul>
+            <li>CSM® <span class="pct done">2023</span></li>
+            <li>CSPO® <span class="pct done">2023</span></li>
+            <li>SAFe® Agilist <span class="pct done">2024</span></li>
+            <li>SAFe® POPM <span class="pct done">2026</span></li>
+            <li>AWS Cloud Practitioner <span class="pct park">Parked</span></li>
+          </ul>
+        </div>
+        <div class="lever-card">
+          <h3>Courses</h3>
+          <ul>
+            <li>SDD (coding agents) <span class="pct done">Done</span></li>
+            <li>BDD <span class="pct done">Done</span></li>
+            <li>API basics <span class="pct done">Done</span></li>
+            <li>Agentic AI <span class="pct go">25%</span></li>
+          </ul>
+        </div>
+        <div class="lever-card">
+          <h3>Applied learning</h3>
+          <ul>
+            <li>paperless Phase 0 <span class="pct done">Live</span></li>
+            <li>cos Sprint 1 <span class="pct go">Awaits approval</span></li>
+            <li>Second brain <span class="pct done">Live</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:40px">
+      <div class="sec-label">Open gates</div>
+      <div class="gates">
+        <div class="gate"><span class="tag open">Open</span><h3>G-learn-1 — cos Sprint 1</h3><p>Approve the plan + test plan, then build the first agentic system owned end-to-end.</p></div>
+        <div class="gate"><span class="tag open">Open</span><h3>G-learn-2 — Agentic AI</h3><p>Finish the course (25% now) to land orchestration fundamentals.</p></div>
+      </div>
+    </section>
+
+    <section style="margin-top:40px">
+      <div class="sec-label">Next steps — candidates, you pick</div>
+      <div class="next">
+        <div class="label">Sharpening of the goal, not directives</div>
+        <ol>
+          <li>Approve cos Sprint 1 (onboarding + decision-brief) <span class="hint">— clearest first real move</span></li>
+          <li>Finish Agentic AI <span class="hint">— looms largest, closest to done</span></li>
+          <li>Lock the §2 applied-learning schema <span class="hint">— records the journey as it happens</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="foot">learning_roadmap.md → this visual · living draft · owned by Daniela · hosted on GitHub Pages (public, no login)</div>
+  </div>
+
+  <script>
+    // Header collapse on scroll (APPROVED w3schools pattern — reliable on iOS too)
+    window.onscroll = function () {
+      document.body.toggleAttribute('scrolled', window.scrollY > 50);
+    };
+  </script>
+</body>
+</html>
