@@ -13,6 +13,8 @@ The report SHALL render a single **Next steps** section: next-step candidates as
 - **WHEN** the next-steps section renders
 - **THEN** the candidates appear as a numbered list with a supporting hint each, and non-blocked items carry no gate label
 
+## ADDED Requirements
+
 ### Requirement: Plain-language terms on first use
 The report SHALL spell out domain acronyms on first use so a reader unfamiliar with product/agile jargon understands the page without outside knowledge: **PO** → "Product Owner (PO)", **SDD** → "Spec-Driven Development (SDD)", **BDD** → "Behavior-Driven Development (BDD)", and deep agile jargon in visible notes (e.g. "PI progress, DoR checker") SHALL be expressed in plain words ("approvals, progress reporting, readiness checks") rather than raw acronyms. Certificate names (CSM®, CSPO®, SAFe®) remain as-is, optionally with a short qualifier.
 
