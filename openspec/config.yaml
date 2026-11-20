@@ -1,0 +1,9 @@
+schema: spec-driven
+
+# Learning roadmap report — OpenSpec project context.
+
+# Auto-update: the published report is a GENERATED artifact. The template
+# (learning_roadmap_diagram.html in the source repo) is canonical; the published
+# index.html is rebuilt from it by a publish script whenever D K reports a
+# new learning event. Do NOT hand-edit index.html — edits are reverted on the
+# next publish.
