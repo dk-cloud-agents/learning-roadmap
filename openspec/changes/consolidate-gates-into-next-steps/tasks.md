@@ -22,16 +22,23 @@
 
 - [ ] 3.1 Decide headline metric: keep "<N> portfolio items in hand / <G> gates open" (default) OR drop the gates count. Implement per D K's choice
 
-## 4. Tests (on D K's approved test plan — real results)
+## 4. Plain-language terms
 
-- [ ] 4.1 Fixture: gates + next-steps merge into one list; gate item badged with human-readable text (no "G-learn-N"); de-dup removes the §5/§6 duplicate
-- [ ] 4.2 Live E2E: publish → single Next steps section, no Open gates section, gate badge visible on the blocked item
-- [ ] 4.3 Regression: other sections + portfolio metric intact; publish silent when unchanged; scoped `index.html` commit; mobile no-overflow
+- [ ] 4.1 Expand acronyms on first use in the visible report: PO → "Product Owner (PO)", SDD → "Spec-Driven Development (SDD)", BDD → "Behavior-Driven Development (BDD)"
+- [ ] 4.2 Translate deep agile jargon in visible notes (Inception note: "approval, PI progress, DoR checker" → "approvals, progress reporting, readiness checks") into plain words
+- [ ] 4.3 Keep cert names (CSM®, CSPO®, SAFe®) as-is, optionally adding a short qualifier where it reads naturally
 
-## 5. Deliverables
+## 5. Tests (on D K's approved test plan — real results)
 
-- [ ] 5.1 Fill `test-plan.md` + `results.md` (real pass/fail + evidence) in the change's `tests/`
-- [ ] 5.2 Hand D K the live link + test report for acceptance
+- [ ] 5.1 Fixture: gates + next-steps merge into one list; gate item badged with human-readable text (no "G-learn-N"); de-dup removes the §5/§6 duplicate
+- [ ] 5.2 Live E2E: publish → single Next steps section, no Open gates section, gate badge visible on the blocked item
+- [ ] 5.3 Jargon audit: live page shows NO bare "G-learn-N", "PI progress", "DoR checker"; PO/SDD/BDD expanded on first use
+- [ ] 5.4 Regression: other sections + portfolio metric intact; publish silent when unchanged; scoped `index.html` commit; mobile no-overflow
+
+## 6. Deliverables
+
+- [ ] 6.1 Fill `test-plan.md` + `results.md` (real pass/fail + evidence) in the change's `tests/`
+- [ ] 6.2 Hand D K the live link + test report for acceptance
 
 ## Workflow follow-up (after acceptance)
 
